@@ -1,7 +1,7 @@
 /*
   html2canvas 0.5.0-beta4 <http://html2canvas.hertzen.com>
   Copyright (c) 2017 Niklas von Hertzen
-  2017-06-14 Custom build by Erik Koopmans, featuring latest bugfixes and features
+  2017-12-28 Custom build by Erik Koopmans, featuring latest bugfixes and features
 
   Released under MIT License
 */
@@ -641,10 +641,9 @@ module.exports = function(ownerDocument, containerDocument, width, height, optio
         };
 
         documentClone.open();
-        documentClone.write("<!DOCTYPE html><html></html>");
         // Chrome scrolls the parent document for some reason after the write to the cloned window???
         restoreOwnerScroll(ownerDocument, x, y);
-        documentClone.replaceChild(documentClone.adoptNode(documentElement), documentClone.documentElement);
+        documentClone.write(documentElement.outerHTML);
         documentClone.close();
     });
 };
