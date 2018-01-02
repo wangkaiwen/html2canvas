@@ -95,9 +95,10 @@ module.exports = function(ownerDocument, containerDocument, width, height, optio
         };
 
         documentClone.open();
+        documentClone.write("<!DOCTYPE html><html></html>");
         // Chrome scrolls the parent document for some reason after the write to the cloned window???
         restoreOwnerScroll(ownerDocument, x, y);
-        documentClone.write(documentElement.outerHTML);
+        documentClone.replaceChild(documentClone.adoptNode(documentElement), documentClone.documentElement);
         documentClone.close();
     });
 };
