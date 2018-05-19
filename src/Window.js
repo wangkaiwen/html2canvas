@@ -60,6 +60,7 @@ export const renderElement = (
 
                       return cloner
                           .inlineFonts(ownerDocument)
+                          .then(() => !options.jsDelay || new Promise(resolve => setTimeout(resolve, options.jsDelay)))
                           .then(() => cloner.resourceLoader.ready())
                           .then(() => {
                               const renderer = new ForeignObjectRenderer(cloner.documentElement);
@@ -103,7 +104,11 @@ export const renderElement = (
                       options,
                       logger,
                       renderElement
-                  ).then(([container, clonedElement, resourceLoader]) => {
+                  ).then(res => {
+                      return options.jsDelay
+                          ? new Promise(resolve => setTimeout(resolve.bind(this, res), options.jsDelay))
+                          : res;
+                  }).then(([container, clonedElement, resourceLoader]) => {
                       if (__DEV__) {
                           logger.log(`Document cloned, using computed rendering`);
                       }
