@@ -64,6 +64,7 @@ var REFTEST = window.location.search.indexOf('reftest') !== -1;
                             top: 0
                         })
                         .appendTo(document.body);
+//              debugger;
                     if (!CI) {
                         $canvas.siblings().toggle();
                         $(window).click(function(event) {

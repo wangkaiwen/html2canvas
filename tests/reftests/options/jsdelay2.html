@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>crop test</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <link rel="stylesheet" href="material.css">
+    <script>
+        h2cOptions = {jsDelay: 0};
+        //dontRun = true;
+        window.addEventListener('load', function () {
+            // document.getElementById('div1').style.background = "green";
+            /*
+            setTimeout(function () {
+                console.log('test!');
+                document.getElementById('div1').style.opacity = "1";
+            }, 500);
+            */
+        });
+    </script>
+    <script type="text/javascript" src="../../test.js"></script>
+    <style>
+        #div2 {
+          /*
+            background: red;
+            transition: background 5s;
+          */
+            transition-duration: 5s;
+            transition-timing-function: cubic-bezier(.4,0,.2,1);
+            transition-property: background-color;
+            background: green;
+        }
+
+        #div2 {
+            opacity: 0;
+            transition-property: opacity;
+        }
+
+
+.mdl-layout {
+  width: 100%;
+  height: 100%;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-flex-direction: column;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  overflow-y: auto;
+  overflow-x: hidden;
+  position: relative;
+  -webkit-overflow-scrolling: touch; }
+
+.mdl-layout.is-small-screen .mdl-layout--large-screen-only {
+  display: none; }
+
+.mdl-layout:not(.is-small-screen) .mdl-layout--small-screen-only {
+  display: none; }
+    </style>
+
+</head>
+<body>
+
+<div id="div1">
+    great success
+</div>
+  <div id="layout" class="mdl-layout">
+
+    <!-- Layout header -->
+    <header class="mdl-layout__header">
+    </header>
+
+    <!-- Layout drawer -->
+    <div class="mdl-layout__drawer">
+    </div>
+
+  </div>
+<script>
+    /*
+    setTimeout(function () {
+        console.log('test!');
+        document.getElementById('div1').style.background = "green";
+    }, 500);
+    */
+</script>
+</body>
+</html>
