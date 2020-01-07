@@ -481,12 +481,13 @@ export class CanvasRenderer {
     }
 
     mask(paths: Path[]) {
+        let x=this.options.x,y=this.options.y;
         this.ctx.beginPath();
-        this.ctx.moveTo(0, 0);
-        this.ctx.lineTo(this.canvas.width, 0);
-        this.ctx.lineTo(this.canvas.width, this.canvas.height);
-        this.ctx.lineTo(0, this.canvas.height);
-        this.ctx.lineTo(0, 0);
+        this.ctx.moveTo(x, y);
+        this.ctx.lineTo(this.canvas.width+x, y);
+        this.ctx.lineTo(this.canvas.width+x, this.canvas.height+y);
+        this.ctx.lineTo(x, this.canvas.height+y);
+        this.ctx.lineTo(x, y);
         this.formatPath(paths.slice(0).reverse());
         this.ctx.closePath();
     }
@@ -689,7 +690,7 @@ export class CanvasRenderer {
                         this.path(shadowPaintingArea);
                     }
 
-                    this.ctx.shadowOffsetX = shadow.offsetX.number + maskOffset;
+                    this.ctx.shadowOffsetX = shadow.offsetX.number + maskOffset*window.devicePixelRatio;
                     this.ctx.shadowOffsetY = shadow.offsetY.number;
                     this.ctx.shadowColor = asString(shadow.color);
                     this.ctx.shadowBlur = shadow.blur.number;
